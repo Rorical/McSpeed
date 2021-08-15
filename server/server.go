@@ -18,7 +18,7 @@ func handler(conn net.Conn) {
 		reader, err := parse.MsgBody(reader)
 		if err != nil {
 			if err == io.ErrUnexpectedEOF || err == io.EOF {
-				return
+				break
 			}
 			panic(err)
 		}
@@ -31,7 +31,7 @@ func handler(conn net.Conn) {
 			err = parse.UnPack(reader, clienthand)
 			if err != nil {
 				if err == io.ErrUnexpectedEOF || err == io.EOF {
-					return
+					break
 				}
 				panic(err)
 			}
@@ -64,8 +64,10 @@ func handler(conn net.Conn) {
 					panic(err)
 				}
 				server.Write(response)
+				fmt.Println("Proxy Start")
 				pro := proxy.New(conn, server)
 				pro.Start()
+				fmt.Println("Proxy Close")
 				return
 			}
 
