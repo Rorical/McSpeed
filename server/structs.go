@@ -14,3 +14,11 @@ type HandshakeClient struct {
 type PingClient struct {
 	Payload int64
 }
+
+type LoginClient struct {
+	Name string
+}
+
+type DisconnectServer struct {
+	Reason string
+}
