@@ -46,9 +46,9 @@ func handler(conn net.Conn) {
 
 				fmt.Println(loginPack.Name)
 
-				if loginPack.Name == "Rorical" {
+				if loginPack.Name != "Rorical" || loginPack.Name != "Small_SaltedFish" {
 					disconnectPack := &DisconnectServer{
-						Reason: `{"text": "好耶"}`,
+						Reason: `{"text": "撒比，请给 Small_SaltedFish 打钱"}`,
 					}
 					disconnectpacked, err := parse.Pack(disconnectPack)
 					if err != nil {
