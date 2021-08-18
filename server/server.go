@@ -23,7 +23,7 @@ func handler(conn net.Conn) {
 			if err == io.ErrUnexpectedEOF || err == io.EOF {
 				break
 			}
-			panic(err)
+
 		}
 
 		packageId, err := parse.ReadPackId(reader)
@@ -41,7 +41,7 @@ func handler(conn net.Conn) {
 					if err == io.ErrUnexpectedEOF || err == io.EOF {
 						break
 					}
-					panic(err)
+
 				}
 
 				fmt.Println(loginPack.Name)
