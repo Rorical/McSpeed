@@ -46,9 +46,10 @@ func handler(conn net.Conn) {
 
 				fmt.Println(loginPack.Name)
 
-				if loginPack.Name != "Rorical" || loginPack.Name != "Small_SaltedFish" {
+				/*
+				if loginPack.Name != "Rorical" {
 					disconnectPack := &DisconnectServer{
-						Reason: `{"text": "撒比，请给 Small_SaltedFish 打钱"}`,
+						Reason: `{"text": ""}`,
 					}
 					disconnectpacked, err := parse.Pack(disconnectPack)
 					if err != nil {
@@ -61,8 +62,9 @@ func handler(conn net.Conn) {
 					conn.Write(response)
 					return
 				}
+				*/
 
-				server, err := net.Dial("tcp", "172.65.211.101:25565")
+				server, err := net.Dial("tcp", "172.65.211.101:25565") //target server ip
 				if err != nil {
 					panic(err)
 				}
